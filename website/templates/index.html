@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <title>VTrade</title>
+   
+    <!-- style sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loadingimg.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   
+    <!-- login script -->
+    <script src="{{ url_for('static', filename='loginandsignup.js') }}" type="module"></script>
+
+    <!-- signup and db -->
+    <script src="{{ url_for('static', filename='signupanddb.js') }}" type="module"></script>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;family=Taviraj:ital@1&amp;display=swap" rel="stylesheet">
+   
+
+</head>
+
+<body>
+  <!-- navbar::start -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <!-- navbar brand -->
+      <a class="navbar-brand" href="aboutus.html" target="_blank">
+        <div class="waviy">
+          <span style="--i:1">V</span>
+          <span style="--i:2">T</span>
+          <span style="--i:3">R</span>
+          <span style="--i:4">A</span>
+          <span style="--i:5">D</span>
+          <span style="--i:6">E</span>
+         </div>
+      </a>
+      <!-- toogle button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLeft" aria-controls="navLeft" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- navbar items :: start -->
+      
+      <div class="collapse navbar-collapse" id="navLeft">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/market">Market</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/portfolio">Portfolio</a>
+          </li> 
+          <li class="nav-item ">
+            <a class="nav-link" href="/watchlist">Watchlist</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/news">News</a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link " href="#login" data-toggle="modal" data-target="#login">Login</a>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <a class="nav-link userProfile align-items-center" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <span>undefined </span>
+                &nbsp;&nbsp;<i class="fa-solid fa-circle-user"></i>
+              </a>
+            
+              <div class="dropdown-menu">
+                <a class="dropdown-item" id="logOut" href="#">Logout</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- navbar items :: end -->
+  </nav>
+    <!-- navbar :: end -->
+
+
+    <!-- Modal login & signup:: start-->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content login-grey">
+          <!-- modal login & signup head ::start-->
+          <div class="modal-header Login-head">
+            <h5 class="modal-title" id="ModalTitleLogin">Login to continue..</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- modal login & signuphead :: end -->
+
+          <!-- modal login & signup body :: start -->
+          <div class="modal-body login-body">
+            <!-- login & signup link :: start -->
+            <div class="row text-center">
+              <div class="col com-link" id="login-col"><a id="login-link" href="#">login</a></div>
+              <div class="col com-link" id="signup-col"> <a id="signup-link"  href="#">signup</a></div>
+            </div>
+            <!-- login & signup link ::end-->
+
+            <!-- login :: start -->
+            <div class="loginform">
+              <!-- login form ::start -->
+              <form method="Get" action="" id="login-Form">
+                  <!-- login email -->
+                <div class="form-group ">
+                  <div class="input-group">
+                    <input type="email" class="form-control col-md-8 col-sm-8 col-8"  id="user_email2">
+                    <label class="floating-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                  </div>
+                </div> 
+
+                <!--login password -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="password" class="form-control col-md-8 col-sm-8 col-8" id="user_pass2" >
+                    <label class="floating-label"><i class="fa-solid fa-lock"></i> Password</label>
+                  </div>
+                </div> 
+
+                <!--login submit -->
+                <input type="button" id="login-btn" class="btn  col-md-9 col-sm-9 col-9" value="Login" data-dismiss="modal" />
+              </form>
+              <!-- login form :: end -->
+
+              <!-- singnup form :: start-->
+              <form method="Get" action="" id="signup-Form">
+                <!-- signup name -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text" class="form-control col-md-8 col-sm-8 col-8" id="user_name">
+                    <label class="floating-label"><i class="fa-solid fa-user"></i> Name</label>
+                  </div>
+                </div> 
+                <!--signup email -->
+                <div class="form-group ">
+                  <div class="input-group">
+                    <input type="email" class="form-control col-md-8 col-sm-8 col-8"  id="user_email">
+                    <label class="floating-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                  </div>
+                </div> 
+
+                <!--signup password -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="password" class="form-control col-md-8 col-sm-8 col-8" id="user_pass">
+                    <label class="floating-label"><i class="fa-solid fa-lock"></i> Password</label>
+                  </div>
+                </div> 
+
+                <!-- signup submit -->
+                <input type="button" id="signup-btn" class="btn col-md-9 col-sm-9 col-9" value="SignUp" data-dismiss="modal" />
+              </form>
+              <!-- signup form :: end -->
+                
+            </div>
+            <!-- login-body :: end -->
+          </div>
+        <!-- login-grey :: end -->
+        </div>
+      </div>
+    </div>
+
+   
+    <!-- home :: start -->
+    <div class="homePage row">
+      <!-- spilting table and nifty -->
+      <div class="col-sm-7">
+        <!-- nifty & bnifty :: start -->
+        <div class="niftyBnifty">
+
+        </div>
+       
+      </div>
+      <!-- nifty and bnifty :: end -->
+
+      <!-- loding img for top movers ::start-->
+          
+      <div id="loading-img" class="loadingio-spinner-spinner-bnlbpi5gsqw"><div class="ldio-vgdr8egwyl">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div></div>
+      <!-- loding img for top movers ::end-->
+
+      
+      <!-- tables :: start -->
+      <div id="top-movers" class="col-sm-5">
+        <!-- top5::start -->
+        <div class="top5 table-responsive-sm">
+          
+        </div>
+        <!-- top5 :: end -->
+
+        <!-- least5:: start -->
+        <div class="least5 table-responsive-sm">
+         
+        </div>
+        <script src="{{ url_for('static', filename='indices.js') }}" type="module"></script>
+
+      </div>
+    </div>
+
+    <!-- script for top movers -->
+    <script src="{{ url_for('static', filename='topmovers.js') }}" type="module"></script>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+   
+     
+
+</body>
+
+</html>
