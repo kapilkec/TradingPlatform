@@ -63,11 +63,9 @@ body{
     margin-top: 4%;
   }
   
-  .nav-item .dropdown .nav-link{
+  .nav-item .dropdown .nav-link , .nav-item:nth-child(3) , .nav-item:nth-child(4) ,.nav-item:nth-child(5){
     display: none;
   }
-
-
   
   /* navbar brand */
   .navbar .navbar-brand {

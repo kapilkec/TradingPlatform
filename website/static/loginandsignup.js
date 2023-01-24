@@ -25,10 +25,16 @@ export function showProfile(name) {
   nameText.querySelector("span").innerHTML = firstName[0];
   document.getElementsByClassName("userProfile")[0].style.display = "flex";
   document.getElementsByClassName("nav-item")[6].style.display = "none";
+  document.getElementsByClassName("nav-item")[2].style.display = "inline";
+  document.getElementsByClassName("nav-item")[3].style.display = "inline";
+  document.getElementsByClassName("nav-item")[4].style.display = "inline";
   $("#login").modal("hide");
 }
 
 export function showLogin() {
   document.getElementsByClassName("userProfile")[0].style.display = "none";
   document.getElementsByClassName("nav-item")[6].style.display = "inline";
+  document.getElementsByClassName("nav-item")[2].style.display = "none";
+  document.getElementsByClassName("nav-item")[3].style.display = "none";
+  document.getElementsByClassName("nav-item")[4].style.display = "none";
 }
