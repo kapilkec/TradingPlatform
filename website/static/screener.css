@@ -1,0 +1,30 @@
+
+.querySelect{
+    margin-top: 6%;
+    margin-left: 30%;
+    margin-bottom: 4%;
+    height: 50px;
+    
+}
+
+#inputState{
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+th{
+    cursor: pointer;
+}
+
+table{
+    text-align: center;
+}
+
+.queryHead{
+    font-size: 50px;
+    font-family: 'Fjalla One', sans-serif;
+    font-style: italic;
+    text-transform: capitalize;
+    
+}

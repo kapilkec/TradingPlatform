@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <!-- for Annotation -->
+     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-annotations.min.js"></script>
+     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-bundle.min.js"></script>
+    <!-- link for icons in paging -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>VTrade</title>
+    
+    <!-- style sheet -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='screener.css') }}">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    <!-- login script -->
+    <script src="{{ url_for('static', filename='loginandsignup.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='sortTable.js') }}" type="module"></script>
+    <script src="{{ url_for('static', filename='searchTable.js') }}" type="module"></script>
+
+
+    <!-- for sweet alert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+     <!-- signup and db -->
+     <script src="{{ url_for('static', filename='signupanddb.js') }}" type="module"></script>
+
+
+    <!-- google fonts -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&amp;family=Taviraj:ital@1&amp;display=swap" rel="stylesheet">
+
+    
+</head>
+
+  <body>
+
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+
+    <!-- navbar::start -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+      <!-- navbar brand -->
+        <a class="navbar-brand" href="aboutus.html" target="_blank">
+          <div class="waviy">
+            <span style="--i:1">V</span>
+            <span style="--i:2">T</span>
+            <span style="--i:3">R</span>
+            <span style="--i:4">A</span>
+            <span style="--i:5">D</span>
+            <span style="--i:6">E</span>
+           </div>
+        </a>
+        <!-- toogle button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navLeft" aria-controls="navLeft" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- navbar items :: start -->
+        
+        <div class="collapse navbar-collapse" id="navLeft">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item  ">
+              <a class="nav-link" href="/market">Market</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/portfolio">Portfolio</a>
+            </li> 
+            <li class="nav-item ">
+              <a class="nav-link" href="/watchlist">Watchlist</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/news">News</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/screener">Screener</a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link " href="#login" data-toggle="modal" data-target="#login">Login</a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link userProfile align-items-center" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <span>undefined </span>
+                  &nbsp;&nbsp;<i class="fa-solid fa-circle-user"></i>
+                </a>
+              
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" id="logOut" href="#">Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- navbar items :: end -->
+    </nav>
+      <!-- navbar :: end -->
+
+
+      <!-- Modal login & signup:: start-->
+      <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content login-grey">
+            <!-- modal login & signup head ::start-->
+            <div class="modal-header Login-head">
+              <h5 class="modal-title" id="ModalTitleLogin">Login to continue..</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- modal login & signuphead :: end -->
+
+            <!-- modal login & signup body :: start -->
+            <div class="modal-body login-body">
+              <!-- login & signup link :: start -->
+              <div class="row text-center">
+                <div class="col com-link" id="login-col"><a id="login-link" href="#">login</a></div>
+                <div class="col com-link" id="signup-col"> <a id="signup-link"  href="#">signup</a></div>
+              </div>
+              <!-- login & signup link ::end-->
+
+              <!-- login :: start -->
+              <div class="loginform">
+                <!-- login form ::start -->
+                <form method="Get" action="" id="login-Form">
+                    <!-- login email -->
+                  <div class="form-group ">
+                    <div class="input-group">
+                      <input type="email" class="form-control col-md-8 col-sm-8 col-8"  id="user_email2">
+                      <label class="floating-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                    </div>
+                  </div> 
+
+                  <!--login password -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="password" class="form-control col-md-8 col-sm-8 col-8" id="user_pass2" >
+                      <label class="floating-label"><i class="fa-solid fa-lock"></i> Password</label>
+                    </div>
+                  </div> 
+
+                  <!--login submit -->
+                  <input type="button" id="login-btn" class="btn  col-md-9 col-sm-9 col-9" value="Login" data-dismiss="modal" />
+                </form>
+                <!-- login form :: end -->
+
+                <!-- singnup form :: start-->
+                <form method="Get" action="" id="signup-Form">
+                  <!-- signup name -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control col-md-8 col-sm-8 col-8" id="user_name">
+                      <label class="floating-label"><i class="fa-solid fa-user"></i> Name</label>
+                    </div>
+                  </div> 
+                  <!--signup email -->
+                  <div class="form-group ">
+                    <div class="input-group">
+                      <input type="email" class="form-control col-md-8 col-sm-8 col-8"  id="user_email">
+                      <label class="floating-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                    </div>
+                  </div> 
+
+                  <!--signup password -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="password" class="form-control col-md-8 col-sm-8 col-8" id="user_pass">
+                      <label class="floating-label"><i class="fa-solid fa-lock"></i> Password</label>
+                    </div>
+                  </div> 
+
+                  <!-- signup submit -->
+                  <input type="button" id="signup-btn" class="btn col-md-9 col-sm-9 col-9" value="SignUp" data-dismiss="modal" />
+                </form>
+                <!-- signup form :: end -->
+                  
+              </div>
+              <!-- login-body :: end -->
+            </div>
+          <!-- login-grey :: end -->
+          </div>
+        </div>
+      </div>
+
+      <form action='{{url_for("views.screener")}}' method="post">
+        <div class="input-group mb-3 col-4 querySelect">
+          <select id="inputState" class="form-control" name="query">
+            <option selected value="3/highest-dividend-yield-shares">highest-dividend-yield-shares</option>
+            <option value="2/piotroski-scan">Piotroski Scan</option>
+            <option value="343087/fii-buying">FII Buying</option>
+            <option value="86/quarterly-growers">Quarterly growers</option>
+            <option value="325075/all-latest-quarterly-results">All latest quarterly results</option>
+            <option value="214283/companies-creating-new-high">Companies creating new high</option>
+            <option value="254/zero-debt">Zero debt</option>
+          </select>
+          <div class="input-group-append">
+            <input type="submit" value="Execute" class="btn btn-success">
+          </div>
+        </div>
+        
+      </form>
+      <div class="d-flex justify-content-between my-5">
+        <div class="queryHead">{{heading}}</div>
+        <div class="input-group mb-3 col-3 mt-2 Search-bar">
+          <input class="searchInput form-control" data-table-id="table1" type="search" placeholder="Search..." aria-label="Search"
+            aria-target="table1">
+          <div class="input-group-append">
+            <span class="input-group-text bg-primary" id="basic-addon2"><i class='fa fa-search' aria-hidden='true'></i> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <table class="table table-striped sortTable" id="table1">
+        <thead>
+          <tr>
+            {% for i in  range(1,attributes|length) %}
+              <th data-toggle="tooltip" title="{{description[i]}}" scope="col">{{attributes[i]}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for key, value in  data.items() %}
+            <tr>
+              <td>{{key}}</td>
+              {% for i in value %}
+                <td>{{i}}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+     </table>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
